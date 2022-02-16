@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { connectWallet, getCurrentWalletConnected } from "./interact";
 
 const Minter = (props) => {
 
@@ -9,12 +10,16 @@ const Minter = (props) => {
   const [description, setDescription] = useState("");
   const [url, setURL] = useState("");
  
-  useEffect(async () => { //TODO: implement
-    
-  }, []);
+  useEffect(async () => {
+    const {address, status} = await getCurrentWalletConnected();
+    setWallet(address)
+    setStatus(status); 
+}, []);
 
-  const connectWalletPressed = async () => { //TODO: implement
-   
+  const connectWalletPressed = async () => {
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
   };
 
   const onMintPressed = async () => { //TODO: implement
