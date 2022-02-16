@@ -132,13 +132,12 @@ export const mintNFT = async (url, name, description) => {
     return {
       success: true,
       status:
-        "✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/" +
-        txHash,
+        "✅ Check out your transaction on Etherscan"
     };
   } catch (error) {
     return {
       success: false,
-      status: "😥 Something went wrong: " + error.message,
+      status: "😥 Opps! Something went wrong: " + error.message,
     };
   }
 };
